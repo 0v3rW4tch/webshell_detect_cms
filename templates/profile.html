@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    信息中心
+{% endblock %}
+
+{% block page_title %}
+    用户和服务器信息
+{% endblock %}
+
+
+{% block main_content %}
+    <h3>用户信息</h3>
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td>用户名：</td>
+            <td>{{ g.cms_user.username }}</td>
+        </tr>
+        <tr>
+            <td>系统当前用户权限：</td>
+            <td>{{ user_info }}</td>
+        </tr>
+    <tr>
+            <td>邮箱：</td>
+            <td>{{ g.cms_user.email }}</td>
+        </tr>
+    </tbody>
+</table>
+
+    <h3>服务器相关信息</h3>
+    <table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td>PHP版本信息：</td>
+            <td>{{ php_info }}</td>
+        </tr>
+        <tr>
+            <td>服务器版本信息：</td>
+            <td>{{ server_info }}</td>
+        </tr>
+    <tr>
+            <td>操作系统信息：</td>
+            <td>{{ system_info }}</td>
+        </tr>
+        <tr>
+            <td>数据库信息：</td>
+            <td>{{ mysql_info | default('只能够检测MySQL~~') }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+{% endblock %}

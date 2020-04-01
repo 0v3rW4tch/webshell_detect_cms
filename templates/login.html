@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+{#    <link rel="icon" href="../../favicon.ico">#}
+
+    <title>Websshell检查</title>
+
+    <!-- Bootstrap core CSS -->
+{#    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">#}
+{#      <link href="https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">#}
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+      <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static',filename='css/signin.css') }}" rel="stylesheet">
+      <script src="{{ url_for('static',filename='js/login.js') }}"></script>
+      <script src="{{ url_for('static',filename='js/zlparam.js') }}"></script>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" method="post">
+        <h2 class="form-signin-heading">请登录</h2>
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="form-group">
+        <label for="inputUsername" class="sr-only">登录名</label>
+        <input type="text" id="inputUsername" class="form-control"  name="username" placeholder="用户名" required autofocus>
+          </div>
+        <div class="form-group">
+          <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required>
+        </div>
+
+{##}
+{#          <div class="form-group">#}
+{#            <div class="input-group">#}
+{#                <input type="text" class="form-control" name="graph_captcha" placeholder="验证码">#}
+{#                <span class="input-group-addon captcha-addon">#}
+{#                    <img id="captcha-image" class="captcha-image" src="{{ url_for('cms.graph_captcha') }}" >#}
+{#                </span>#}
+{#            </div>#}
+{#          </div>#}
+
+
+
+          <div class="checkbox">
+          <label>
+            <input type="checkbox" value="1" name="remember"> Remember me
+          </label>
+        </div>
+
+
+
+
+
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+      </form>
+        {% if message %}
+            <p style="text-align: center"  class="text-danger">{{ message }}</p>
+        {% endif %}
+    </div> <!-- /container -->
+
+
+
+  </body>
+</html>

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+修改个人密码
+{% endblock %}
+
+
+
+{% block page_title %}
+修改个人密码
+{% endblock%}
+
+
+
+{% block head %}
+    <script src="{{ url_for('static',filename='js/resetpwd.js') }}"></script>
+    <style>
+        .form-container{
+            width: 300px;
+
+        }
+    </style>
+
+{% endblock %}
+
+{% block main_content %}
+    <form action="" method="post">
+    <div class="form-container">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">旧密码</span>
+            <input  class="form-control" type="password" name="oldpwd" placeholder="请输入旧密码">
+        </div>
+    </div>
+        <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">新密码</span>
+            <input  class="form-control" type="password" name="newpwd" placeholder="请输入新密码">
+        </div>
+    </div>
+        <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">确认密码</span>
+            <input class="form-control" type="password" name="newpwd2" placeholder="确认新密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <button id="submit" class="btn btn-primary">立即保存</button>
+    </div>
+    </div>
+
+    </form>
+{% endblock %}

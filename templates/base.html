@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{% block title%}
+
+    {% endblock %}</title>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/base.css') }}">
+    <script src="{{ url_for('static',filename="js/base.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/zlajax.js") }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='js/sweetalert/sweetalert.css') }}">
+    <script src="{{ url_for('static',filename="js/sweetalert/sweetalert.min.js") }}"></script>
+    <script src="{{ url_for('static',filename="js/sweetalert/zlalert.js") }}"></script>
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ url_for('cms.index') }}">机器学习-Webshell检测（Web端）</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ url_for("cms.profile") }}"><span>用户：</span>{{ g.cms_user.username }}</a></li>
+            <li><a href={{ url_for("cms.logout") }}>注销</a></li>
+          </ul>
+{#          <form class="navbar-form navbar-right">#}
+{#            <input type="text" class="form-control" placeholder="查找...">#}
+{#          </form>#}
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-3 col-md-2 sidebar">
+              <ul class="nav-sidebar">
+                <li class="unfold"><a href="{{ url_for('cms.index') }}">首页</a></li>
+                <li class="profile-li">
+                    <a href="#">信息查询和密码管理<span></span></a>
+                    <ul class="subnav">
+                        <li><a href="{{ url_for('cms.profile') }}">用户和本机信息</a></li>
+                        <li><a href="{{ url_for('cms.resetpwd') }}">修改密码</a></li>
+{#                        <li><a href="#">修改邮箱</a></li>#}
+                    </ul>
+                </li>
+
+                <li class="nav-group post-manage"><a href="{{ url_for('cms.upload_check') }}">上传检测</a></li>
+                <li class="comments-manage"><a href="{{ url_for('cms.input_check') }}">输入检测</a></li>
+                <li class="board-manage"><a href="{{ url_for('cms.dictionary_check') }}">目录检测</a></li>
+{##}
+                <li class="nav-group user-manage"><a href="{{url_for('cms.Add_Black_Data') }}">添加黑样本学习数据</a></li>
+{#                <li class="role-manage"><a href="#">一组数据输入学习</a></li>#}
+{##}
+{#                <li class="nav-group cmsuser-manage"><a href="#">CMS用户管理</a></li>#}
+{#                <li class="cmsrole-manage"><a href="#">CMS组管理</a></li>#}
+            </ul>
+          </div>
+          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <h1>{% block page_title %}{% endblock %}</h1>
+            <div class="main_content">
+                {% block main_content %}
+                
+                {% endblock %}
+            </div>
+          </div>
+      </div>
+    </div>
+</body>
+</html>

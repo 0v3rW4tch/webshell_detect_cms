@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link href="{{ url_for('static',filename='css/fileinput.min.css') }}" rel="stylesheet" />
+    <script src="{{ url_for('static',filename='js/bootstrap_upload/fileinput.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap_upload/fileinput_locale_zh.js') }}"></script>
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/bootstrap-table.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.16.0/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="{{ url_for('static',filename='js/uploadcheck.js') }}"></script>
+
+
+{% endblock %}
+
+{% block main_content %}
+
+    <h3><b>上传检测</b></h3>
+
+  <div class="form-group">
+{#    <label class="control-label" >文件输入</label>#}
+    <input type="file" name="input_file" id="input_file"   multiple  >
+{#      <input type="file" name="input_file" id="input_file" data-url="/cms/upload_check/" multiple />#}
+  </div>
+
+{#    <div class="form-group">#}
+{#        <button  type="submit" id="submit_file" class="btn btn-default">提交</button>#}
+{#    </div>#}
+
+{#</form>#}
+    <div class="form-group">
+    <table id="upload_result_table" class="table table-hover"></table>
+     </div>
+
+
+{% endblock %}

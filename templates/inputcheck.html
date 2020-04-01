@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <script src="{{ url_for('static',filename='js/inputcheck.js') }}"></script>
+{% endblock %}
+
+
+{% block main_content %}
+
+
+<form method="post" action="" >
+
+<div class="form-container">
+    <div class="form-group">
+    <label for="name">请输入需要检测的文件内容</label>
+    <textarea id="input_data"  class="form-control" rows="10" name="input_data" placeholder="输入形式：<?php echo 12345;?>"></textarea>
+
+  </div>
+    <div class="form-group">
+         <button type="button" id="submit" class="btn btn-primary btn-lg btn-block">提交</button>
+
+    </div>
+</div>
+
+</form>
+
+<div class="panel panel-danger" hidden="hidden" id="danger_info_alert">
+      <div class="panel-heading">
+        <h3 class="panel-title">危险</h3>
+      </div>
+      <div class="panel-body">
+        请及时做出处理！！！
+      </div>
+</div>
+
+<div class="panel panel-success" hidden="hidden" id="safe_info_alert">
+      <div class="panel-heading">
+        <h3 class="panel-title">安全</h3>
+      </div>
+      <div class="panel-body">
+        安全文件~~^_^
+      </div>
+    </div>
+
+
+{% endblock %}
