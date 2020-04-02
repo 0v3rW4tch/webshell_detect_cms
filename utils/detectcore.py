@@ -341,7 +341,17 @@ def train_save_model():
     do_xgboost(x,y)
 
 
+def do_cross_validate():
+    global data_pkl_file
+    global label_pkl_file
+    x = pickle.load(open(data_pkl_file, "rb"))
+    y = pickle.load(open(label_pkl_file,"rb"))
 
+    xgb_classifier = xgb.XGBClassifier()
+
+    cross_result = cross_val_score(xgb_classifier,x,y,n_jobs=-1,cv=10)
+
+    print(cross_result)
 
 
 
@@ -349,10 +359,11 @@ def train_save_model():
 
 
 if __name__ == "__main__":
-    x, y = get_feature_by_opcode()
+    # x, y = get_feature_by_opcode()
     # print(TMP_PHP_PATH + '/tmp.php')
-    do_xgboost(x,y)
+    # do_xgboost(x,y)
     # do_single_check(x,y)
     # print(os.path.dirname(__file__))
     # do_dictionary_check()
+    do_cross_validate()
     # pass
