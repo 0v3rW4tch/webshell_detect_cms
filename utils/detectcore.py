@@ -104,6 +104,29 @@ def load_files_opcode_re(dir):
     return files_list,file_list_name
 
 
+
+
+def load_files_opcode_re_train(dir):
+    global min_opcode_count
+    files_list = []
+    g = os.walk(dir)
+    for path,r,filelist in g:
+        # file_list_name = filelist
+        for filename in filelist:
+            print("filename:{}".format(filename))
+            if filename.endswith(".php"):
+                fulepath = os.path.join(path,filename)
+                # print("Loading {} opcode".format(fulepath))
+                t = load_file_opcode(fulepath)
+                if len(t) > min_opcode_count:
+                    #保证长度
+                    files_list.append(t)
+                else:
+                    print("Load File is not fit!!!")
+
+    return files_list
+
+
 def get_feature_by_opcode():
     global white_count
     global black_count
@@ -113,10 +136,10 @@ def get_feature_by_opcode():
     # print("max features is {}".format(max_features))
 
 
-    webshell_files_list = load_files_opcode_re(webshell_dir)
+    webshell_files_list = load_files_opcode_re_train(webshell_dir)
     y1=[1]*len(webshell_files_list)
     black_count=len(webshell_files_list)
-    wp_files_list =load_files_opcode_re(whitefile_dir)
+    wp_files_list =load_files_opcode_re_train(whitefile_dir)
     y2=[0]*len(wp_files_list)
     white_count=len(wp_files_list)
 
@@ -173,7 +196,7 @@ def do_metrics(y_test,y_pred):
 def do_xgboost(x,y):
     xgb_classifier = xgb.XGBClassifier()
 
-    cross_result = cross_val_score(xgb_classifier,x,y,n_jobs=-1,cv=10)
+    # cross_result = cross_val_score(xgb_classifier,x,y,n_jobs=-1,cv=10)
 
     x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.4,random_state=0)
     xgb_model = xgb_classifier.fit(x_train,y_train)
@@ -184,7 +207,7 @@ def do_xgboost(x,y):
 
     y_pred = xgb_model.predict(x_test)
     print(classification_report(y_test,y_pred))
-    print(cross_result)
+    # print(cross_result)
     print(do_metrics(y_test, y_pred))
 
 
@@ -321,11 +344,15 @@ def train_save_model():
 
 
 
+
+
+
+
 if __name__ == "__main__":
-    # x, y = get_feature_by_opcode()
+    x, y = get_feature_by_opcode()
     # print(TMP_PHP_PATH + '/tmp.php')
-    # do_xgboost(x,y)
+    do_xgboost(x,y)
     # do_single_check(x,y)
     # print(os.path.dirname(__file__))
     # do_dictionary_check()
-    pass
+    # pass

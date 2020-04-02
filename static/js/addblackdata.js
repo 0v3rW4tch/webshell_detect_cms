@@ -64,14 +64,12 @@ $(function () {
                     zlalert.alertSuccessToast("已成功上传黑样本，学习需要时间请过段时间再来看结果！");
 
 
-
                      $("#myModal").modal('hide');
 
 
                 }else{
 
-
-                        zlalert.alertInfo(single_result['message']);
+                    zlalert.alertInfo(single_result['message']);
 
                     $("#myModal").modal('hide');
                 }
