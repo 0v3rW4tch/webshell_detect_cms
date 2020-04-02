@@ -9,7 +9,7 @@
     <meta name="author" content="">
 {#    <link rel="icon" href="../../favicon.ico">#}
 
-    <title>Websshell检查</title>
+    <title>Websshell检测</title>
 
     <!-- Bootstrap core CSS -->
 {#    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">#}
@@ -40,15 +40,15 @@
         <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required>
         </div>
 
-{##}
-{#          <div class="form-group">#}
-{#            <div class="input-group">#}
-{#                <input type="text" class="form-control" name="graph_captcha" placeholder="验证码">#}
-{#                <span class="input-group-addon captcha-addon">#}
-{#                    <img id="captcha-image" class="captcha-image" src="{{ url_for('cms.graph_captcha') }}" >#}
-{#                </span>#}
-{#            </div>#}
-{#          </div>#}
+
+          <div class="form-group">
+            <div class="input-group">
+                <input type="text" class="form-control" name="graph_captcha" placeholder="验证码">
+                <span class="input-group-addon captcha-addon">
+                    <img id="captcha-image" class="captcha-image" src="{{ url_for('cms.graph_captcha') }}" >
+                </span>
+            </div>
+          </div>
 
 
 

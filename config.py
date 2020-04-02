@@ -1,6 +1,8 @@
 #models views forms
 from datetime import timedelta
 DEBUG=True
+
+
 SECRET_KEY = "SGVsbG8sIFdvcmxkIQ=="
 
 HOSTNAME = '127.0.0.1'

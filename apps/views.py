@@ -16,6 +16,7 @@ from pypinyin import lazy_pinyin
 
 
 UPLOAD_PATH =  os.path.dirname(__file__).replace('apps','upload').replace('\\','/')
+CAPTHCHA_PATH = os.path.dirname(__file__).replace('apps','tmp').replace('\\','/')
 
 
 bp = Blueprint("cms",__name__,url_prefix='/cms/')
@@ -24,7 +25,7 @@ info_list = []
 @bp.route('/')
 @login_required
 def index():
-    print(UPLOAD_PATH)
+    # print(UPLOAD_PATH)
     return render_template('index.html')
     # return jsonify({"code": 200, "message": '1'})
 
@@ -42,7 +43,9 @@ def graph_captcha():
     #获取验证码
     text,image = Captcha.gene_graph_captcha()
     #通过网络传输需要二进制去进行传输
-    g.graph_text = text.lower()
+    graph_text = text.lower()
+    with open(CAPTHCHA_PATH + '/captcha.txt','w') as fp:
+        fp.write(graph_text)
     # print(g.graph_text)
     out  = BytesIO()
     image.save(out,'png')
@@ -232,7 +235,7 @@ class LoginView(views.MethodView):
             username = request.form.get("username")
             password = request.form.get("password")
             remember = form.remember.data
-            graph_num = request.form.get("graph_captcha")
+            # graph_num = request.form.get("graph_captcha")
             user = CMSUser.query.filter_by(username=username).first()
             if user and user.check_password(password) :
                 session['user_id'] = user.id
