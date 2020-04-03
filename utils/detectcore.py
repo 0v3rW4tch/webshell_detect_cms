@@ -17,8 +17,7 @@ white_count = 0
 black_count = 0
 max_document_length = 4000
 
-webshell_dir = "F:/毕设准备/2book-master/data/webshell/webshell/PHP/"
-whitefile_dir = "F:/毕设准备/2book-master/data/webshell/normal/php/"
+
 php_bin = "D:\\phpStudy\\PHPTutorial\\php\\php-7.0.12-nts\\php.exe"
 
 
@@ -29,6 +28,8 @@ TEMPLATE_PATH = os.path.dirname(__file__).replace('utils','templates')
 data_pkl_file= DATA_PATH + "data-webshell-opcode-tf.pkl"
 label_pkl_file= DATA_PATH + "label-webshell-opcode-tf.pkl"
 
+webshell_dir = os.path.dirname(__file__) +"/train_data/webshell/PHP/"
+whitefile_dir = os.path.dirname(__file__) + "/train_data/normal/php/"
 
 
 
@@ -218,13 +219,14 @@ def do_metrics(y_test,y_pred):
                       }
 
     #一开始pkl文件里面就带有5次数据，不需要初始化
-    last_five_list = pickle.load(open(DATA_PATH + 'last_five_list.pkl'))
+    last_five_list = pickle.load(open(DATA_PATH + 'last_five_list.pkl','rb'))
 
-    last_five_list = last_five_list.append(metrics.accuracy_score)[-5:]
+    last_five_list.append(metrics.accuracy_score(y_test,y_pred))
+
 
     #更新pkl文件
     with open(DATA_PATH + 'last_five_list.pkl', 'wb') as fw:
-        pickle.dump(last_five_list, fw)
+        pickle.dump(last_five_list[-5:], fw)
 
     with open(DATA_PATH + 'do_metrics.pkl','wb') as fp:
         pickle.dump(metrics_result,fp)

@@ -22,7 +22,7 @@ $(function (){
               console.log(data['code']);
               if(data['code'] == 200){
                   dataiE.val("");
-                  zlalert.alertSuccessToast("已输入请等待判断结果！");
+                  zlalert.alertSuccessToast("已输入,请等待判断结果！");
 
                   setTimeout(function(){
                     $("#safe_info_alert").toggle(2000);
