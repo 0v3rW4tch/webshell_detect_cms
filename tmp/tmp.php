@@ -1,1 +1,1 @@
-<?php echo 12345;
+<?php $name=123; echo $name;

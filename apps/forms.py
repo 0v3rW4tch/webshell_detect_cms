@@ -2,15 +2,25 @@ from wtforms import Form,StringField,IntegerField,FileField
 from wtforms.validators import InputRequired,Length,ValidationError,Regexp,EqualTo
 from flask import g    # def validate_graph_captcha(self,field):
 from flask_wtf.file import FileAllowed,FileRequired
+import os
 
+CAPTHCHA_PATH = os.path.dirname(__file__).replace('apps','tmp').replace('\\','/')
 
 
 class LoginForm(Form):
     username = StringField(validators=[Length(4,10,message="用户名长度为4-10"),InputRequired(message="请输入用户名")])
     password = StringField(validators=[Length(4,20,message="请输入正确格式密码")])
-    # graph_captcha = StringField(validators=[Regexp(r"\w{4}",message="图形验证码错误")])
+    graph_captcha = StringField(validators=[Regexp(r"\w{4}",message="图形验证码错误"),InputRequired(message="请输入验证码")])
     remember = IntegerField()
     # graph_captcha = StringField(validators=[Length(4,4,message="验证码长度为4"),InputRequired(message="请输入验证码")])
+
+
+    def validate_graph_captcha(self,field):
+        with open(CAPTHCHA_PATH + '/captcha.txt', 'r') as fp:
+            grapth_text_mem = fp.read()
+        print(field.data)
+        if not grapth_text_mem or grapth_text_mem != field.data:
+            raise ValidationError(message="图形验证码错误！")
 
     #     graph_captcha = field.data
     #     graph_captcha_mem = g.graph_text

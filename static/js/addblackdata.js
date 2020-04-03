@@ -64,14 +64,12 @@ $(function () {
                     zlalert.alertSuccessToast("已成功上传黑样本，学习需要时间请过段时间再来看结果！");
 
 
-
                      $("#myModal").modal('hide');
 
 
                 }else{
 
-
-                        zlalert.alertInfo(single_result['message']);
+                    zlalert.alertInfo(single_result['message']);
 
                     $("#myModal").modal('hide');
                 }
@@ -96,15 +94,16 @@ $(function () {
             });
 
 }).on("hidden.bs.modal", function() {
-    // $(this).removeData("bs.modal");
-    /*modal页面加载$()错误,由于移除缓存时加载到<div class="modal-content"></div>未移除的数据，手动移除加载的内容*/
-    // $(this).find(".modal-content").children().remove();
+
         setTimeout(function () {
             window.location.reload();
-        },3200);
+        },2000);
 
 
 });
+
+    $('#df_table').attr("class","table");
+
 })
 
 
