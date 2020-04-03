@@ -6,16 +6,66 @@
     <script src="{{ url_for('static',filename='js/bootstrap_upload/fileinput.min.js') }}"></script>
     <script src="{{ url_for('static',filename='js/bootstrap_upload/fileinput_locale_zh.js') }}"></script>
     <script src="{{ url_for('static',filename='js/addblackdata.js') }}"></script>
+    <style>
+        #last_ten_train{
+            height: 150px;
+{#            width: 226px;#}
+        }
+
+    </style>
+
 {% endblock %}
 
 {% block main_content %}
 
     <h3><b>当前模型训练情况</b></h3>
-    <div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+<div class="jumbotron">
+
+<div class="row">
+  <div class=" col-lg-6">
+      <div><h4 style="text-align: center"><b>交叉验证测试结果</b></h4></div>
+      <div><img class="img-thumbnail" src="{{ url_for('static',filename='picture/report/bar.jpg') }}" alt=""></div>
+
+  </div>
+   <div class=" col-lg-6">
+        <div><h4 style="text-align: center"><b>训练模型报告表格</b></h4></div>
+
+
+{#<iframe src='https://view.officeapps.live.com/op/view.aspx?src=http://127.0.0.1:8888/static/report_to_file.xlsx' width='100%' height='100%' frameborder='1'>#}
+{#</iframe>#}
+
+        <div class="panel panel-default">
+{#            <div class="panel-heading" style="text-align: center">训练模型报告表格</div>#}
+            {% include 'classification_report.html' %}
+        </div>
+
+
+       <div>
+            <h4 style="text-align: center"><b>近5次训练准确率变化</b></h4>
+       </div>
+       <div>
+            <img class="img-thumbnail" id="last_ten_train" src="{{ url_for('static',filename='picture/report/last_five_train.jpg') }}" alt="">
+       </div>
+
+
+
+  </div>
+
+
+
+
 </div>
+
+
+
+<div class="well well-sm" style="margin-top:30px;">
+            <span> <b>最新一次模型训练平均结果:  </b>&nbsp;&nbsp; &nbsp;</span>
+            <span><b>accuracy:&nbsp; </b>{{ accuracy }}  &nbsp; &nbsp;</span>
+            <span><b>precision:&nbsp;</b>{{ precision }} &nbsp; &nbsp; </span>
+            <span><b>recall_score: &nbsp;</b>{{ recall_score }} &nbsp; &nbsp; </span>
+            <span><b>f1_score: &nbsp;</b>{{ f1_score }}</span>
+        </div>
+
 
 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 
@@ -45,6 +95,11 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
+
+
+</div>
+
+
 
 
 {% endblock %}

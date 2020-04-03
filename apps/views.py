@@ -3,12 +3,11 @@ from .forms import LoginForm,ResetForm,InputCheckForm,UploadForm,DictionaryForm
 from .models import CMSUser
 from .decorators import login_required
 from utils.captcha import Captcha
-from utils.detectcore import do_single_check,do_dictionary_check,do_upload_check,webshell_dir,train_save_model
+from utils.detectcore import do_single_check,do_dictionary_check,do_upload_check,webshell_dir,DATA_PATH
 from io import BytesIO
 from exts import db
 import subprocess
-import re
-import os
+import re,os,pickle
 from werkzeug.utils import secure_filename
 import shutil,hashlib,time
 from pypinyin import lazy_pinyin
@@ -302,9 +301,9 @@ class InputCheckView(views.MethodView):
             # print(type(input_data))
             print(detect_result)
             if detect_result == 1:
-                return jsonify({"code":201,"message":"safe"})
+                return jsonify({"code":201,"message":"danger"})
             if detect_result == 0:
-                return jsonify({"code": 200, "message": "danger"})
+                return jsonify({"code": 200, "message": "safe"})
             # context = {"code":200,"message":"1"}
             # return render_template('inputcheck.html',result_json = jsonify({"code":200,"message":"1"}))
         else:
@@ -317,7 +316,8 @@ class InputCheckView(views.MethodView):
 @bp.route('/add_black_data/',methods=['GET'])
 @login_required
 def Add_Black_Data():
-    return render_template('addblackdata.html')
+    context = pickle.load(open(DATA_PATH + 'do_metrics.pkl','rb'))
+    return render_template('addblackdata.html',**context)
 
 
 

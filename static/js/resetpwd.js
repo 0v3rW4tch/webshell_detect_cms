@@ -30,6 +30,10 @@ $(function () {
                    oldpwdE.val("");
                    newpwdE.val("");
                    newpwd2E.val("");
+                   setTimeout(function () {
+                       $(window).attr('location','/cms/logout');
+                   },2100);
+
                }else{
                    var message = data['message'];
                    zlalert.alertInfo(message);

@@ -22,6 +22,10 @@ def create_app():
                    "func": "apps.views:del_upload_file",  # 任务位置
                    "trigger": "interval",  # 触发器
                    "seconds": 36000  # 时间间隔
+                   },{"id": "mission_3",  # 任务ID
+                   "func": "utils.detectcore:do_cross_validate",  # 任务位置
+                   "trigger": "interval",  # 触发器
+                   "seconds": 3600*12  # 时间间隔
                    }
                   ]}
     )
