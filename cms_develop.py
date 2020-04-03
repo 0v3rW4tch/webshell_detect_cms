@@ -27,7 +27,7 @@ def create_app():
                    "trigger": "interval",  # 触发器
                    "seconds": 3600*12  # 时间间隔
                    }
-                  ]}
+                  ]},threaded=True
     )
     scheduler.init_app(app)
     scheduler.start()
@@ -38,9 +38,7 @@ def create_app():
 
 
 
-
-
+app = create_app()
 
 if __name__ == '__main__':
-    app = create_app()
-    app.run(port=8888,threaded=True)
+    app.run(threaded=True)

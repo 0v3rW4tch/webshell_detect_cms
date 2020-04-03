@@ -218,13 +218,14 @@ def do_metrics(y_test,y_pred):
                       }
 
     #一开始pkl文件里面就带有5次数据，不需要初始化
-    last_five_list = pickle.load(open(DATA_PATH + 'last_five_list.pkl'))
+    last_five_list = pickle.load(open(DATA_PATH + 'last_five_list.pkl','rb'))
 
-    last_five_list = last_five_list.append(metrics.accuracy_score)[-5:]
+    last_five_list.append(metrics.accuracy_score(y_test,y_pred))
+
 
     #更新pkl文件
     with open(DATA_PATH + 'last_five_list.pkl', 'wb') as fw:
-        pickle.dump(last_five_list, fw)
+        pickle.dump(last_five_list[-5:], fw)
 
     with open(DATA_PATH + 'do_metrics.pkl','wb') as fp:
         pickle.dump(metrics_result,fp)

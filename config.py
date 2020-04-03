@@ -1,6 +1,6 @@
 #models views forms
 from datetime import timedelta
-DEBUG=True
+DEBUG=False
 
 
 SECRET_KEY = "SGVsbG8sIFdvcmxkIQ=="
