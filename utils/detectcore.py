@@ -17,8 +17,7 @@ white_count = 0
 black_count = 0
 max_document_length = 4000
 
-webshell_dir = "F:/毕设准备/2book-master/data/webshell/webshell/PHP/"
-whitefile_dir = "F:/毕设准备/2book-master/data/webshell/normal/php/"
+
 php_bin = "D:\\phpStudy\\PHPTutorial\\php\\php-7.0.12-nts\\php.exe"
 
 
@@ -29,6 +28,8 @@ TEMPLATE_PATH = os.path.dirname(__file__).replace('utils','templates')
 data_pkl_file= DATA_PATH + "data-webshell-opcode-tf.pkl"
 label_pkl_file= DATA_PATH + "label-webshell-opcode-tf.pkl"
 
+webshell_dir = os.path.dirname(__file__) +"/train_data/webshell/PHP/"
+whitefile_dir = os.path.dirname(__file__) + "/train_data/normal/php/"
 
 
 

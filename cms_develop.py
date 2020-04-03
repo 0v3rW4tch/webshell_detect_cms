@@ -21,7 +21,7 @@ def create_app():
                    },{"id": "mission_2",  # 任务ID
                    "func": "apps.views:del_upload_file",  # 任务位置
                    "trigger": "interval",  # 触发器
-                   "seconds": 36000  # 时间间隔
+                   "seconds": 3600*11  # 时间间隔
                    },{"id": "mission_3",  # 任务ID
                    "func": "utils.detectcore:do_cross_validate",  # 任务位置
                    "trigger": "interval",  # 触发器
@@ -41,4 +41,4 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
-    app.run(threaded=True)
+    app.run(threaded=True,port=8888)

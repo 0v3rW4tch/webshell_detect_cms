@@ -177,7 +177,6 @@ def get_server_info():
 #删除上传文件
 def del_upload_file():
     shutil.rmtree('./upload')
-
     os.mkdir('./upload')
     print('del_upload_test_success')
     # print(os.getcwd())
