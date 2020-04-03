@@ -2,4 +2,5 @@ test.py
 */.idea/
 .idea/
 tmp.pkl
+*/__pycache__
 __pycache__/

@@ -4,9 +4,34 @@
     Webshell扫描器
 {% endblock %}
 
+{% block head %}
+    <style>
+
+
+    </style>
+{% endblock %}
+
+
 {% block page_title %}
-    <p align="center">欢迎来到Webshell扫描Web端</p>
-    <p align="center"><img src="{{ url_for("static",filename="picture/BXS.png") }}" alt=""></p>
-    <p align="center">Created by <a href="https://0verwatch.top">4me</a> </p>
+    <p align="center">欢迎使用Webshell扫描器Web端</p>
+
+
+
+{% endblock %}
+
+{% block main_content %}
+    <div>
+        <p align="center"><img src="{{ url_for("static",filename="picture/BXS.png") }}" alt=""></p>
+    </div>
+
+    <div>
+        <p align="center">&copy;2019-2020 Created by <a href="https://0verwatch.top">4me</a></p>
+    </div>
+
+
+</div>
+
+
+
 
 {% endblock %}

@@ -196,7 +196,7 @@ def upload_data_set():
             filename = hash.hexdigest() + '.php'
             filename = secure_filename(filename)
             print(filename,os.path.join(webshell_dir, filename))
-            # j.save(os.path.join(webshell_dir, filename))
+            j.save(os.path.join(webshell_dir, filename))
 
         return jsonify({"code": 200, "message": "保存成功！"})
     else:

@@ -25,26 +25,27 @@ $(function (){
                   zlalert.alertSuccessToast("已输入,请等待判断结果！");
 
                   setTimeout(function(){
-                    $("#safe_info_alert").toggle(2000);
-                     },3000);
+                    $("#safe_info_alert").toggle(3000);
+                     },2000);
 
                   setTimeout(function(){
                         $("#safe_info_alert").toggle('slow');
-                    },3000);
+                    },5500);
 
 
               }else if(data['code'] == 201){
                   dataiE.val("");
-                  zlalert.alertSuccessToast("已输入请等待判断结果！")
+                  zlalert.alertSuccessToast("已输入,请等待判断结果！")
 
                   setTimeout(function(){
-                  $("#danger_info_alert").toggle(2000);},3000);
+                  $("#danger_info_alert").toggle(3000);},2000);
 
                   setTimeout(function(){
                         $("#danger_info_alert").toggle('slow');
-                    },3000);
+                    },5500);
               }
               else{
+                  dataiE.val("");
                   var message = data['message'];
                    zlalert.alertInfo(message);
               }
@@ -52,6 +53,7 @@ $(function (){
 
           },
           'fail' : function (error) {
+                 dataiE.val("");
                  zlalert.alertErrorToast("网络出现错误！");
            },
 

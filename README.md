@@ -1,5 +1,3 @@
-### Detect_Webshell_CMS
-
 本人的毕设项目，写得很烂，请大佬们多多见谅，使用的flask+scikit-learn完成的，目前测试只在window环境下，主要是跟非机器学习类的webshell扫描器，比如：D盾，做一个对比，如果想在Linux环境下使用可能需要重新修改代码里面的一些东西，路径啥的。这整个项目下来用实力验证了下面的图片：
 
 ![GUxa1x.png](https://s1.ax1x.com/2020/04/03/GUxa1x.png)
@@ -64,6 +62,16 @@
 
 ![GaZjYV.png](https://s1.ax1x.com/2020/04/03/GaZjYV.png)
 
+
+
+#### 效果
+
+尝试使用一个Webshell文件进行对比，对比最新版D盾查杀和该扫描器的一个效果，可以看到D盾没发现任何东西，这时候机器学习的优势就出来了。
+
+![GaoRYT.png](https://s1.ax1x.com/2020/04/03/GaoRYT.png)
+
+
+
 最后的最后，毕设这种东西，做出来的东西能(好)跑(看)就(就)行(行)啦XD
 
 
@@ -73,7 +81,7 @@
 先配置好所需要的一些变量
 
 ```bash
-pip install -r requirement.txt
+pip install -r requirements.txt
 ```
 
 若果不想看到一些编码类的警告的话，可以把目录下的whl文件给安装
@@ -111,5 +119,4 @@ python start.py
 #### 参考：
 
 书籍：《Web安全机器学习入门》
-
 

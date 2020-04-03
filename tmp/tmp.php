@@ -1,1 +1,1 @@
-<?php $a=1; echo $a;
+<?php echo 1234;

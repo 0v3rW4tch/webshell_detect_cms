@@ -97,7 +97,7 @@ $(function () {
 
         setTimeout(function () {
             window.location.reload();
-        },2000);
+        },1200);
 
 
 });
