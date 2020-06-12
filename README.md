@@ -10,7 +10,7 @@
 
 而训练的模型使用的是`xgboost`，因为`xgboost`普遍来说比随机森林要更好些，拟合度更高，速度也经过了优化，参考论文：[基于XGBoost算法的Webshell检测方法研究](http://kns.cnki.net/kcms/detail/detail.aspx?DBCode=CJFQ&FileName=JSJA2018S1082&DBName=CJFDLAST2018&v=MzI3NTdMM0pMejdCYjdHNEg5bXZybzlOWm9RSUJYMU55aEJtNms0SVRBbVhyaGN5RnJDVVI3cWZZK1pzRnk3blU=)
 
-而本人在测试过程中也对比这几种算法的准确性，在普通的词袋模型，发现xgboost确实是比较有有优势的。
+而本人在测试过程中也对比这几种算法的准确性，在普通的词袋模型，发现xgboost确实是比较有有优势的，为啥CNN跑不出来，我也不太清楚，ε=(´ο｀*)))唉。
 
 ![GaVH56.png](https://s1.ax1x.com/2020/04/03/GaVH56.png)
 
