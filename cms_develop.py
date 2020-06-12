@@ -17,7 +17,7 @@ def create_app():
          "JOBS": [{"id": "mission_1",
                    "func": "utils.detectcore:train_save_model",
                    "trigger": "interval",
-                   "seconds": 36000
+                   "seconds": 3600*24
                    },{"id": "mission_2",  # 任务ID
                    "func": "apps.views:del_upload_file",  # 任务位置
                    "trigger": "interval",  # 触发器
@@ -41,4 +41,4 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
-    app.run(threaded=True,port=8888)
+    app.run(host='0.0.0.0',threaded=True,port=8888)

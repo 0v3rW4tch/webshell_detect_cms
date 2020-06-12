@@ -59,6 +59,7 @@ $(document).ready(function () {
 
            }).on("fileuploaded", function (event, data, previewId, index){
                 var single_result = data.response;
+                console.log(single_result);
                 if(single_result['code'] == 200){
                     $('#upload_result_table').bootstrapTable({
                         striped: true,
@@ -75,6 +76,8 @@ $(document).ready(function () {
                         rowStyle:function(row,index){
                              if(row.property == "危险"){
                                  return {css:{"color":"red"}};
+                             }else{
+                                 return {css:{"color":"green"}};
                              }
                         },
                         data: single_result['message'],
@@ -87,7 +90,7 @@ $(document).ready(function () {
             }).on('filebatchuploadsuccess', function(event, data, previewId, index){
 
                     var batch_result = data.response;
-
+                    console.log(batch_result);
                     if(batch_result['code'] == 200){
                     $('#upload_result_table').bootstrapTable({
                         striped: true,
@@ -104,6 +107,8 @@ $(document).ready(function () {
                         rowStyle:function(row,index){
                              if(row.property == "危险"){
                                  return {css:{"color":"red"}};
+                             }else{
+                                 return {css:{"color":"green"}};
                              }
                         },
                         data: batch_result['message'],

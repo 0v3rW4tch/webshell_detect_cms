@@ -439,6 +439,7 @@ def do_cross_validate():
     plt.ylabel('准确率')
     plt.xlabel('测试次数')
     plt.savefig(PICTURE_FILE_PATH + 'bar.jpg')
+    last_five_train_graph()
     print(cross_result,type(cross_result))
 
 
@@ -473,11 +474,13 @@ def last_five_train_graph():
 
 
 if __name__ == "__main__":
-    x, y = get_feature_by_opcode()
+    # x, y = get_feature_by_opcode()
     # print(TMP_PHP_PATH + '/tmp.php')
-    do_xgboost(x,y)
+    # do_xgboost(x,y)
     # do_single_check(x,y)
     # print(os.path.dirname(__file__))
     # do_dictionary_check()
-    # do_cross_validate()
+    train_save_model()
+    do_cross_validate()
+    last_five_train_graph()
     pass
